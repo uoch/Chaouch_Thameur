@@ -1,7 +1,39 @@
 {
+  "name": "ericwadkins.com",
+  "version": "11.1.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
   "dependencies": {
-    "body-parser": "^1.20.2",
-    "express": "^4.18.2",
-    "sqlite3": "^5.1.6"
-  }
+    "ansi-to-html": "^0.6.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.14.2",
+    "busboy": "^0.2.13",
+    "chalk": "^1.1.3",
+    "cheerio": "^0.22.0",
+    "connect-busboy": "0.0.2",
+    "cookie-parser": "^1.4.1",
+    "country-code-lookup": "0.0.10",
+    "dns": "^0.2.2",
+    "dotenv": "^4.0.0",
+    "express": "^4.13.3",
+    "geoip-lite": "1.1.8",
+    "iso-3166-2": "^0.5.0",
+    "mongodb": "^2.1.4",
+    "morgan": "^1.6.1",
+    "nodemailer": "^2.1.0",
+    "nodemailer-mailgun-transport": "^1.2.2",
+    "oauth2-server": "^2.4.1",
+    "parse-csv": "^0.2.0",
+    "parse-domain": "^1.1.0",
+    "path": "^0.12.7",
+    "request": "^2.81.0",
+    "serve-favicon": "^2.3.0",
+    "serve-index": "^1.8.0",
+    "unzip2": "^0.2.5",
+    "whois-ux": "0.0.2",
+    "winston": "^2.1.1"
+  },
+  "devDependencies": {}
 }
